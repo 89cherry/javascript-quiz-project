@@ -1,57 +1,40 @@
 class Quiz {
-
-    constructor(questionsValue, timeLimitValue, timeRemainingValue) {
-        this.questions = questionsValue
-        this.timeLimit = timeLimitValue
-        this.timeRemaining = timeRemainingValue
+    constructor(questions, timeLimit, timeRemaining) {
+        this.questions = questions
+        this.timeLimit = timeLimit
+        this.timeRemaining = timeRemaining
         this.correctAnswers = 0
         this.currentQuestionIndex = 0
     }
 
     getQuestion() {
-        return this.questions[this.currentQuestionIndex]
+        const currentQuestion = this.questions[this.currentQuestionIndex]
+        return currentQuestion
     }
 
     moveToNextQuestion() {
         this.currentQuestionIndex++
-
     }
 
     shuffleQuestions() {
-        let currentIndex = this.questions.length;
-
-        while (currentIndex != 0) {
-
-
-            let randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
-
-
-            [this.questions[currentIndex], this.questions[randomIndex]] = [
-                this.questions[randomIndex], this.questions[currentIndex]];
-        }
+        this.questions.sort(() => .5 - Math.random());
     }
 
-    checkAnswer(answer) {
-        if (answer === this.questions[this.currentQuestionIndex].answer) {
+    checkAnswer(answerToCheck) {
+
+        const currentQuestion = this.getQuestion()
+        const currentAnswer = currentQuestion.answer
+
+        if (answerToCheck === currentAnswer) {
             this.correctAnswers++
         }
-
-
     }
 
     hasEnded() {
-
-        if (this.currentQuestionIndex < this.questions.length) {
+        if (this.currentQuestionIndex >= this.questions.length) {
+            return true
+        } else {
             return false
         }
-        else if (this.currentQuestionIndex === this.questions.length) {
-            return true
-        }
     }
-
 }
-
-//}
-
-//should return the item from the questions array at the position of currentQuestionIndex.
