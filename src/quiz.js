@@ -37,9 +37,27 @@ class Quiz {
             return false
         }
     }
-}
+
+    filterQuestionsByDifficulty(difficulty) {
+
+        if (isNaN(difficulty)) {
+            return false
+        }
+
+        const filteredQuestions = this.questions.filter(eachQuestion => {
+            return eachQuestion.difficulty === difficulty
+        })
+
+        this.questions = filteredQuestions
+    }
 
 
-filterQuestionsByDifficulty(){
+    averageDifficulty() {
+        const sumDifficulties = this.questions.reduce((acc, eachQuestion) => {
+            return acc + eachQuestion.difficulty
+        }, 0)
 
-}
+        const totalAverage = sumDifficulties / this.questions.length
+        return totalAverage
+    }
+} 
