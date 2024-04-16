@@ -38,3 +38,8 @@ class Quiz {
         }
     }
 }
+
+
+filterQuestionsByDifficulty(){
+
+}
