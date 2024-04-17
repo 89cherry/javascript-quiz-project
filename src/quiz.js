@@ -1,4 +1,5 @@
 class Quiz {
+
     constructor(questions, timeLimit, timeRemaining) {
         this.questions = questions
         this.timeLimit = timeLimit
@@ -8,15 +9,18 @@ class Quiz {
     }
 
     getQuestion() {
+
         const currentQuestion = this.questions[this.currentQuestionIndex]
         return currentQuestion
     }
 
     moveToNextQuestion() {
+
         this.currentQuestionIndex++
     }
 
     shuffleQuestions() {
+
         this.questions.sort(() => .5 - Math.random());
     }
 
@@ -31,6 +35,7 @@ class Quiz {
     }
 
     hasEnded() {
+
         if (this.currentQuestionIndex >= this.questions.length) {
             return true
         } else {
@@ -40,8 +45,8 @@ class Quiz {
 
     filterQuestionsByDifficulty(difficulty) {
 
-        if (isNaN(difficulty)) {
-            return false
+        if (isNaN(difficulty) || !(difficulty > 0 && difficulty < 4) || typeof difficulty != 'number') {
+            return
         }
 
         const filteredQuestions = this.questions.filter(eachQuestion => {
@@ -53,11 +58,12 @@ class Quiz {
 
 
     averageDifficulty() {
+
         const sumDifficulties = this.questions.reduce((acc, eachQuestion) => {
             return acc + eachQuestion.difficulty
         }, 0)
 
-        const totalAverage = sumDifficulties / this.questions.length
-        return totalAverage
+        return sumDifficulties / this.questions.length
     }
-} 
+}
+
