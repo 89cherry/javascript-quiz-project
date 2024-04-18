@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //
     // 1. Show the question
     // Update the inner text of the question container element and show the question text
-    questionContainer.innerText = question.text
+
 
 
     // 2. Update the green progress bar
@@ -152,14 +152,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-
   function nextButtonHandler() {
     let selectedAnswer; // A variable to store the selected answer value
 
 
 
     // YOUR CODE HERE:
-    const choicesElm = document.querySelectorAll("choices")
+    const choicesElm = document.querySelectorAll(".choices")
 
     choicesElm.forEach((eachChoiceElm) => {
       if (eachChoiceElm.checked) {
@@ -168,8 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
     })
-
-
 
     //
     // 1. Get all the choice elements. You can use the `document.querySelectorAll()` method.
